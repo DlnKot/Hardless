@@ -12,12 +12,16 @@ class HomeView: UIViewController {
     
     @IBOutlet weak var MainLabel: UITextView!
     
-    @IBOutlet var NumButton: [UIButton]!
+    @IBOutlet weak var DeleteButton: UIButton!
+    @IBOutlet weak var EnterButton: UIButton!
+    
+    @IBOutlet var NumButtons: [UIButton]!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainLabel()
+        setUpNumbers()
         
     }
 
@@ -41,10 +45,18 @@ class HomeView: UIViewController {
     }
     
     private func setUpNumbers() {
-        for num in NumButton {
+        for num in NumButtons {
+            num.layer.borderWidth = 1
             num.layer.cornerRadius = 25
+            num.layer.borderColor = UIColor(named: "BorderColor")?.cgColor
+            num.titleLabel?.adjustsFontSizeToFitWidth = true
         
         }
+        EnterButton.setTitle("", for:  .normal)
+        DeleteButton.setTitle("", for:  .normal)
+        DeleteButton.setImage(UIImage(systemName: "delete.left.fill"), for: .normal)
+        EnterButton.setImage(UIImage(systemName: "arrow.turn.down.left"), for: .normal)
+        
         
     }
 }
